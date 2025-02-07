@@ -1,0 +1,63 @@
+# Documentation of compose spec can be found at https://github.com/compose-spec/compose-spec
+# [Manfred, 21apr2023]
+
+# Last version check 05 Feb 2025
+
+# According to the compose spec we can specify the compose project name here. However, VS Code does
+# not honor this as of 21 Apr 2023. Therefore there is a .env file at the root of this git repository
+# in which the environment variable COMPOSE_PROJECT_NAME is defined as 'rimutec'. Once VS Code supports
+# the top-level element 'name', the following can be used instead.
+name: 'rimutec'
+# [Manfred, 21apr2023]
+
+services:
+   # change the service name, the container name and the hostname for each dev container that connects
+   # to the same virtual network. [Manfred, 29jul2022]
+   ts-service-dev:
+      build:
+         context: .
+         dockerfile: Dockerfile
+      container_name: ts-service-dev
+      hostname: ts-service-dev.local
+      working_dir: /work
+      ports:
+         - "25036:3000" # By default express.js uses port 3000
+         # Using double quotes for port mapping to avoid YAML reading it as a number with a different base
+         # e.g. "3333:22" would result in port numbers greater than 130000 which are clearly invalid.
+         # Without double quotes YAML interprets it as a number based on 22. [Manfred, 24aug2022]
+      volumes:
+         - ..:/work:rw
+      environment:
+         - EXPRESS_PORT=3000
+         - NODE_ENV=local
+         # We don't need to provide AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY when using localstack.
+         # And in the cloud permissions will be granted via roles and policies, not with access keys.
+         # We provide them here, as otherwise "aws dynamodb" commands won't work in the VS Code terminal.
+         # The values are arbitrary and not used by localstack. [Manfred, 09dec2024]
+         - AWS_ACCESS_KEY_ID=localstack
+         - AWS_SECRET_ACCESS_KEY=localstack
+         - AWS_REGION=us-east-1
+      command: bash -c "/work/.devcontainer/init.sh && sleep infinity"
+      depends_on:
+         - ts-service-localstack
+      networks:
+         rimutec:
+      # user: node
+
+   ts-service-localstack:
+      image: localstack/localstack:4.0.3
+      # Last version check on 03 Dec 2024.
+      # Newer versions may be available at https://hub.docker.com/r/localstack/localstack
+      # The latest version number is available at https://github.com/localstack/localstack/releases
+      # Note that the most recent release may not yet be available as a docker image.
+      container_name: ts-service-localstack
+      hostname: ts-service-localstack.local
+      ports:
+         - "25035:4566"              # localstack gateway
+         # We don't need to expose the range. Just the gateway port is enough. [Manfred, 27jan2025]
+         # - "24370-24419:4510-4559"   # external services port range
+      networks:
+         rimutec:
+
+networks:
+   rimutec:
