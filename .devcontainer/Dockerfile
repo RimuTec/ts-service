@@ -1,6 +1,6 @@
 # cSpell: words procps iputils dearmor keyrings awscliv
 
-# Last version check on 05 Feb 2025.
+# Last version check on 07 Feb 2025.
 
 FROM node:22.13.1
 # This is an LTS version.
@@ -27,7 +27,7 @@ RUN apt-get install -y \
 
 ################################################################################
 # Replace npm with pnpm
-RUN npm install -g pnpm@10.2.0
+RUN npm install -g pnpm@10.2.1
 # Newer versions may be available at https://www.npmjs.com/search?q=pnpm
 RUN npm uninstall npm -g
 # In case the previous uninstall command doesn't work, other options are described at
@@ -48,7 +48,7 @@ RUN pnpm add --global stryker-cli@1.0.2
 
 ################################################################################
 # Optional tools
-# 
+#
 # Comment in as needed. Some may require additional config files.
 ################################################################################
 
