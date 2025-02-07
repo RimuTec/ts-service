@@ -1,40 +1,38 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-    // cSpell: disable
-    "name": "RimuTec TS Service",
-    "dockerComposeFile": [
-       "docker-compose.yml"
-    ],
-    // The name of the following service has to match one of the services in docker-compose.yml
-    "service": "ts-service-dev",
-    "workspaceFolder": "/work",
-    "customizations": {
-       "vscode": {
-          "extensions": [
-             "antfu.browse-lite",
-             "analytic-signal.preview-html",
-             "dbaeumer.vscode-eslint",
-             "donjayamanne.githistory",
-             "editorconfig.editorconfig",
-             "github.copilot@prerelease",
-             "github.copilot-chat@prerelease",
-             "github.vscode-github-actions",
-             "mhutchie.git-graph",
-             "ms-vsliveshare.vsliveshare",
-             "mutantdino.resourcemonitor",
-             "rluvaton.vscode-vitest", // Source: https://github.com/rluvaton/vitest-vs-code-plugin
-             "streetsidesoftware.code-spell-checker",
-             "tsandall.opa",
-             "usernamehw.errorlens"
-             // "vitest.explorer"
-          ]
-       }
-    },
-    "remoteEnv": {
-       "OAUTH_HTTP_INSECURE_TRANSPORT": "1"
-    },
-    "remoteUser": "node",
-    "shutdownAction": "stopCompose"
-    // cSpell: enable
- }
- 
+   // cSpell: disable
+   "name": "RimuTec TS Service",
+   "dockerComposeFile": [
+      "docker-compose.yml"
+   ],
+   // The name of the following service has to match one of the services in docker-compose.yml
+   "service": "ts-service-dev",
+   "workspaceFolder": "/work",
+   "customizations": {
+      "vscode": {
+         "extensions": [
+            "antfu.browse-lite",
+            "analytic-signal.preview-html",
+            "dbaeumer.vscode-eslint",
+            "donjayamanne.githistory",
+            "editorconfig.editorconfig",
+            "github.copilot@prerelease",
+            "github.copilot-chat@prerelease",
+            "github.vscode-github-actions",
+            "mhutchie.git-graph",
+            "ms-vsliveshare.vsliveshare",
+            "mutantdino.resourcemonitor",
+            "rluvaton.vscode-vitest", // Source: https://github.com/rluvaton/vitest-vs-code-plugin
+            "streetsidesoftware.code-spell-checker",
+            "tsandall.opa",
+            "usernamehw.errorlens"
+         ]
+      }
+   },
+   "remoteEnv": {
+      "OAUTH_HTTP_INSECURE_TRANSPORT": "1"
+   },
+   "remoteUser": "node",
+   "shutdownAction": "stopCompose"
+   // cSpell: enable
+}

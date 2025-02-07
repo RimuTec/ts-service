@@ -1,8 +1,75 @@
 {
-    "editor.formatOnSave": true,
-    "editor.tabSize": 3,
-    "git.rebaseWhenSync": true,
-    "remote.autoForwardPorts": false,
-    "remote.restoreForwardedPorts": false,
-    "typescript.preferences.quoteStyle": "single"
+   "cSpell.language": "en-US",
+   "cSpell.ignorePaths": [
+      "package-lock.json",
+      "node_modules",
+      "vscode-extension",
+      ".git/{info,lfs,logs,refs,objects}/**",
+      ".git/{index,*refs,*HEAD}",
+      ".vscode",
+      ".vscode-insiders",
+      "build"
+   ],
+   "cSpell.words": [
+      "clientservice",
+      "Gsis",
+      "inversify",
+      "localstack",
+      "luxon",
+      "oidc",
+      "oids",
+      "optarix",
+      "pnpx",
+      "rego",
+      "rimutec",
+      "ropc",
+      "runuser",
+      "tsoa",
+   ],
+   "editor.formatOnSave": true,
+   "editor.guides.bracketPairs": true,
+   "editor.indentSize": "tabSize",
+   "editor.tabSize": 3,
+   "files.autoSave": "afterDelay",
+   "files.insertFinalNewline": true,
+   "git.rebaseWhenSync": true,
+   "github.copilot.chat.codeGeneration.instructions": [
+      {
+         "file": ".copilot-instructions.md",
+      },
+   ],
+   "github-actions.workflows.pinned.refresh.enabled": true,
+   "github-actions.workflows.pinned.workflows": [
+      ".github/workflows/upgrade-deps.yml",
+      ".github/workflows/ci.yml"
+   ],
+   "remote.autoForwardPortsSource": "output",
+   "remote.autoForwardPorts": false,
+   "remote.portsAttributes": {
+      "3000": {
+         "onAutoForward": "ignore",
+      },
+      "3004": {
+         "onAutoForward": "ignore",
+      },
+      "443": {
+         "protocol": "https",
+      },
+      "8443": {
+         "protocol": "https",
+      },
+   },
+   "remote.restoreForwardedPorts": false,
+   "terminal.integrated.cwd": "/work/service",
+   "typescript.preferences.quoteStyle": "single",
+   "vscode-vitest.packageManager": "pnpm",
+   "vscode-vitest.testCommand": "vitest:run",
+   "vscode-vitest.executableOptions": {
+      "run": true,
+      "watch": false,
+      "debug": true
+   },
+   "vscode-vitest.preTest": [
+      "cd /work/service",
+   ],
 }
